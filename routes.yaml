@@ -7,9 +7,31 @@ services:
     url: http://localhost:8002
 
 routes:
+  # Option 1: Si le service students écoute sur /api/students
   /api/courses:
     target: courses
+    rewrite: /api/courses  # Garder le chemin complet
+  
   /api/students:
     target: students
+    rewrite: /api/students  # Garder le chemin complet
+  
+  # Option 2: Si le service students écoute sur /students (sans /api)
+  # /api/courses:
+  #   target: courses
+  #   rewrite: /courses
+  # /api/students:
+  #   target: students
+  #   rewrite: /students
+  
+  # Option 3: Si le service students écoute à la racine /
+  # /api/courses:
+  #   target: courses
+  #   rewrite: /
+  # /api/students:
+  #   target: students
+  #   rewrite: /
+  
   /graphql:
     target: aggregator
+    # Pas de rewrite, transmet tel quel

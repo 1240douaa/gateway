@@ -1,0 +1,15 @@
+services:
+  courses:
+    url: http://localhost:8000
+  students:
+    url: http://localhost:8081
+  aggregator:
+    url: http://localhost:8002
+
+routes:
+  /api/courses:
+    target: courses
+  /api/students:
+    target: students
+  /graphql:
+    target: aggregator
